@@ -2,12 +2,20 @@ GEM
   remote: https://rubygems.org/
   specs:
     coinbase (4.1.0)
+    i18n (0.8.1)
+    monetize (1.6.0)
+      money (~> 6.8)
+    money (6.8.2)
+      i18n (>= 0.6.4, < 0.9)
+      sixarm_ruby_unaccent (>= 1.1.1, < 2)
+    sixarm_ruby_unaccent (1.1.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   coinbase
+  monetize
 
 RUBY VERSION
    ruby 2.4.1p111
