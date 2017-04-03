@@ -7,6 +7,8 @@ client = Coinbase::Wallet::Client.new(api_key: ENV['COINBASE_API_KEY'], api_secr
 
 account_id = client.primary_account.id
 
+
+# Need to list buys/sells separately to get the exact values including fees and order delays
 usd_buy_total = BigDecimal.new(0)
 btc_total = BigDecimal.new(0)
 client.list_buys(account_id, fetch_all: true).each do |data, resp|
