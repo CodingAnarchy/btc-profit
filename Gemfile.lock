@@ -1,7 +1,13 @@
+GIT
+  remote: https://github.com/coinbase/coinbase-ruby.git
+  revision: 51780c7b7e65adc805e061926b1138db83b7bcb1
+  branch: master
+  specs:
+    coinbase (4.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    coinbase (4.1.0)
     i18n (0.8.1)
     monetize (1.6.0)
       money (~> 6.8)
@@ -14,7 +20,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  coinbase
+  coinbase!
   monetize
 
 RUBY VERSION
