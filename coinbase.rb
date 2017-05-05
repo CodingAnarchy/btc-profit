@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/env ruby
 require 'rubygems'
 require 'bundler/setup'
 
@@ -8,7 +8,7 @@ require 'monetize'
 I18n.load_path = ['en.yml']
 client = Coinbase::Wallet::Client.new(api_key: ENV['COINBASE_API_KEY'], api_secret: ENV['COINBASE_API_SECRET'])
 
-crypto_totals = { btc: BigDecimal.new(0), eth: BigDecimal.new(0) } 
+crypto_totals = { btc: BigDecimal.new(0), eth: BigDecimal.new(0), ltc: BigDecimal.new(0) } 
 usd_buy_total = BigDecimal.new(0)
 usd_transfer_total = BigDecimal.new(0)
 usd_sell_total = BigDecimal.new(0)
