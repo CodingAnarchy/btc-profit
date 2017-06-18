@@ -31,8 +31,8 @@ client.accounts.each do |account, resp|
     next if data['type'] == 'transfer'
     if ['send', 'exchange_deposit', 'exchange_withdrawal', 'order'].include? data['type']
       crypto_totals[currency] += BigDecimal.new(data['amount']['amount']) # Remove sent BTC from current holdings (amounts are negative for sends)
-      usd_transfer_total += BigDecimal.new(data['native_amount']['amount']) # Adjust USD spent for transfer amounts in and out (at prices when transfer was done)
-    elsif not ['buy', 'sell'].include? data['type']
+      usd_transfer_total -= BigDecimal.new(data['native_amount']['amount']) # Adjust USD spent for transfer amounts in and out (at prices when transfer was done)
+    elsif not ['buy', 'sell', 'vault_withdrawal'].include? data['type']
       puts data
     end
   end
@@ -40,5 +40,5 @@ end
 
 current_btc_value = crypto_totals[:btc] * BigDecimal.new(client.spot_price['amount'])
 current_eth_value = crypto_totals[:eth] * BigDecimal.new(client.spot_price(currency_pair: 'ETH-USD')['amount'])
-profit = current_btc_value + current_eth_value + usd_sell_total - usd_buy_total
+profit = current_btc_value + current_eth_value + usd_transfer_total + usd_sell_total - usd_buy_total
 puts "Profit: #{profit.to_money.format}"
